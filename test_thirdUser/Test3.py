@@ -3,6 +3,8 @@ from selenium import webdriver
 import time
 from logInPage import LogIn_Page
 from AddToCart import Add_button
+from CartUpdate import Cart_Update
+from selenium.webdriver.common.by import By
 
 class Test_User3(unittest.TestCase):
     @classmethod
@@ -23,12 +25,15 @@ class Test_User3(unittest.TestCase):
         login.enter_password("secret_sauce")
         login.click_login()
         time.sleep(2)
-
-    
-        driver = self.driver
+        #driver = self.driver
         btn = Add_button(driver)
         btn.itemOne()
-   
+        
+        cartUpdate=Cart_Update(driver)
+        cartUpdate.runAssertion()
+        time.sleep(0.5)
+
+        
 
 if __name__ == '__main__':
     unittest.main()
