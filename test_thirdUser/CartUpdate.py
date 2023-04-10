@@ -15,3 +15,4 @@ class Cart_Update():
             else:
                 self.driver.save_screenshot("CartBadge.png")
                 print ("Error occurred! Cart is not well updated")
+                AssertionError

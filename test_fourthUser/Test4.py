@@ -1,11 +1,10 @@
 import unittest
 from selenium import webdriver
 import time
-from logInPage import LogIn_Page
-from AddToCart import Add_button
-from CartUpdate import Cart_Update
+from login import LogInPage
+from Addtocart import Add
 
-class Test_User3(unittest.TestCase):
+class Test_User4(unittest.TestCase):
     @classmethod
     def setUp(cls):
         super().setUp(cls)
@@ -14,23 +13,23 @@ class Test_User3(unittest.TestCase):
         cls.driver.get(cls.base_url)
         cls.driver.maximize_window()
         time.sleep(0.5) 
-    
-        
-    def test_addtocart(self):
+    def tearDown(self):
+        super().tearDown()
+
+    def test_User4 (self):
         driver = self.driver 
-        login = LogIn_Page(driver)
-        login.enter_username("problem_user")
+        login = LogInPage(driver)
+        login.enter_username("performance_glitch_user")
         login.enter_password("secret_sauce")
         login.click_login()
-        time.sleep(2)
-        btn = Add_button(driver)
-        btn.itemOne()
-        
-        cartUpdate=Cart_Update(driver)
-        cartUpdate.runAssertion()
-        time.sleep(0.5)
+
+        driver = self.driver
+        add= Add(driver)
+        add.Add_Cart()
+            
+
     def tearDown(self):
         super().tearDown()
 
 if __name__ == '__main__':
-    unittest.main()
+    unittest.main()        
